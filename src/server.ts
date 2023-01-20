@@ -31,6 +31,11 @@ connectDatabase();
 app.use((error:Error & Partial<ApiError>,req:Request,res:Response,next:NextFunction)=>{
     const statusCode = error.statusCode ?? 500
     const message = error.statusCode ? error.message : 'Internal Server Error'
+     res.header("Access-Control-Allow-Origin", "*");
+	//Quais são os métodos que a conexão pode realizar na API
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+
+    res.header("Access-Control-Allow-Headers", "Origin, X-Request-Width, Content-Type, Accept");
 
     return res.status(statusCode).json({ message:message })
     })
