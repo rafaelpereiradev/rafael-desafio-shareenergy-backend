@@ -18,6 +18,7 @@ app.use((req, res, next) => {
     app.use(cors());
     next();
 });
+console.log('passou no middleware cors')
 dotenv.config();
 const port = process.env.PORT || 3333;
 
